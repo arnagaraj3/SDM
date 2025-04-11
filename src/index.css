@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  @layer base {
+    /* ✅ Light Mode (Default) */
+    :root {
+      --color-primary: #1e3a8a; /* Deep Blue */
+      --color-secondary: #334155; /* Dark Gray */
+      --color-bg: #ffffff; /* Pure White */
+      --color-text: #111827; /* Almost Black */
+      --color-accent: #9333ea; /* Purple for highlights */
+    }
+  
+    /* ✅ Dark Mode */
+    .dark {
+      --color-primary: #60a5fa; /* Soft Sky Blue */
+      --color-secondary: #94a3b8; /* Muted Gray */
+      --color-bg: #111827; /* Very Dark Blue */
+      --color-text: #f8fafc; /* Light White */
+      --color-accent: #e879f9; /* Soft Magenta */
+    }
+  }
+
+/* ✅ Ensures text is visible in input */
+.react-chatbot-kit-chat-input {
+  color: black !important;  /* Forces black text */
+  background-color: white !important;  /* White input box */
+  border: 1px solid #ccc !important;
+  padding: 10px !important;
+  border-radius: 5px !important;
+}
+
+.dark .react-chatbot-kit-chat-input {
+  color: white !important;  /* White text in dark mode */
+  background-color: #333 !important;  /* Dark input box */
+}
+
+@keyframes gradientBlur {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+.animate-gradient-blur {
+    background-size: 400% 400%;
+    animation: gradientBlur 5s ease infinite;
+}
+
+main{
+  margin: 0;
+  padding: 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: 100%;
+  height: 100vh;
+}
+video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+body {
+  @apply bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300;
+}
+
+@layer components {
+  .page-enter {
+    @apply opacity-0 translate-y-4;
+  }
+  .page-enter-active {
+    @apply opacity-100 translate-y-0 transition-all duration-500;
+  }
+}
+
+.glass {
+  @apply bg-white/30 dark:bg-white/10 backdrop-blur-lg rounded-lg shadow-md;
+}
+
+.btn {
+  @apply px-6 py-3 font-semibold rounded-lg shadow-md transition;
+}
+.btn-primary {
+  @apply bg-[var(--color-primary)] text-white hover:bg-blue-700;
+}
+.btn-secondary {
+  @apply bg-[var(--color-secondary)] text-white hover:bg-gray-700;
+}
+
+.navbar {
+  @apply fixed top-0 left-0 w-full bg-white dark:bg-gray-900 p-4 shadow-md flex justify-between items-center;
+}
+
+.sidebar {
+  @apply fixed top-0 left-0 h-full bg-gray-900 text-white w-64 p-6 transition-transform duration-300;
+}
+.sidebar-closed {
+  @apply -translate-x-full;
+}
+
+.card {
+  @apply bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md;
+}
+.card-title {
+  @apply text-2xl font-bold text-gray-700 dark:text-gray-300;
+}
+.card-value {
+  @apply text-lg dark:text-gray-400;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-[var(--color-primary)] rounded-lg;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-200 dark:bg-gray-700;
+}
